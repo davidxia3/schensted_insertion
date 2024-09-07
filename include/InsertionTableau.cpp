@@ -17,6 +17,12 @@ std::pair<int, int> InsertionTableau::insert(int x) {
         while (j > 0 && x < t[i][j-1]) {
             j = j - 1;
         }
+
+        if (j == t[i].size()) {
+            t[i].push_back(x);
+            return std::make_pair(i, j);
+        }
+
         int temp = t[i][j];
         t[i][j] = x;
         x = temp;
