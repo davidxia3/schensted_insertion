@@ -14,6 +14,10 @@ class InsertionTableau {
 
         std::vector<std::vector<int> > t;
 
+        bool boring = false;
+
+        std::vector<int> list;
+
 };
 
 #endif
