@@ -9,6 +9,8 @@ class Tableaux {
 
         void insertion(std::vector<int> permutation);
 
+        bool determineBoring(std::vector<int> permutation);
+
         InsertionTableau p;
         RecordingTableau q;
 

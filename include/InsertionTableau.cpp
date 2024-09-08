@@ -7,15 +7,15 @@ InsertionTableau::InsertionTableau() {
 
 std::pair<int, int> InsertionTableau::insert(int x) {
     int i = 0;
-    int previous = -1;
+
+    int initialColumn = -1;
+    
     while (true) {
         if (t.size() <= i) {
             t.push_back(std::vector<int>(1, x));
-            if (previous != -1 && previous == 0) {
+            if (initialColumn == 0) {
                 boring = true;
-                list.push_back(x);
-            } 
-            previous = 0;
+            }
             return std::make_pair(i,0);
         }
 
@@ -27,26 +27,36 @@ std::pair<int, int> InsertionTableau::insert(int x) {
 
         if (j == t[i].size()) {
             t[i].push_back(x);
-            if (previous != -1 && previous == t[i].size() - 1) {
+            if (initialColumn == t[i].size()-1) {
                 boring = true;
-                list.push_back(x);
-            } 
-            previous = t[i].size() - 1;
+            }
             return std::make_pair(i, j);
         }
 
-        if (previous != -1 && previous == j) {
+        if (initialColumn == -1) {
+            initialColumn = j;
+        } else if (initialColumn == j) {
             boring = true;
-            list.push_back(x);
+        } else {
+            initialColumn = -2;
         }
 
         int temp = t[i][j];
         t[i][j] = x;
         x = temp;
-        previous = j;
 
         i = i + 1;
     }
+}
+
+bool InsertionTableau::determineBoring(std::vector<int> permutation) {
+    for (int x : permutation) {
+        insert(x);
+        if (boring) {
+            return true;
+        }
+    }
+    return false;
 }
 
 std::ostream& operator<<(std::ostream& os, const InsertionTableau& it) {

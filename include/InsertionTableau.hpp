@@ -10,6 +10,8 @@ class InsertionTableau {
 
         std::pair<int, int> insert(int x);
 
+        bool determineBoring(std::vector<int> permutation);
+
         friend std::ostream& operator<<(std::ostream& os, const InsertionTableau& it);
 
         std::vector<std::vector<int> > t;
