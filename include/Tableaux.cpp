@@ -12,10 +12,6 @@ void Tableaux::insertion(std::vector<int> permutation) {
     }
 }
 
-bool Tableaux::determineBoring(std::vector<int> permutation) {
-    return p.determineBoring(permutation);
-}
-
 std::ostream& operator<<(std::ostream& os, const Tableaux& tableaux) {
     os << "Insertion Tableau (P):\n";
     os << tableaux.p;

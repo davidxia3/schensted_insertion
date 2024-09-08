@@ -18,7 +18,7 @@ std::vector<int> generatePermutation(int n) {
     return permutation;
 }
 
-void plotVector(const std::vector<int>& data, int start, int stop, int step) {
+void plotVector(const std::vector<int>& data, int start, int step) {
     int max_val = *std::max_element(data.begin(), data.end());
     
     int scale = 50;
@@ -36,7 +36,7 @@ void plotVector(const std::vector<int>& data, int start, int stop, int step) {
 
 int main() {
 
-    // std::vector<int> permutation = generatePermutation(5);
+    // std::vector<int> permutation = {5,4,3,2,1,6,7};
 
     // for (int x : permutation) {
     //     std::cout << x << " ";
@@ -45,7 +45,9 @@ int main() {
 
     // Tableaux t = Tableaux();
 
-    // std::cout << t.determineBoring(permutation) << std::endl;
+    // t.insertion(permutation);
+
+    // std::cout << t.p.interesting << std::endl;
 
 
 
@@ -62,14 +64,53 @@ int main() {
             std::vector<int> permutation = generatePermutation(i);
             Tableaux t = Tableaux();
 
-            if (t.determineBoring(permutation)) {
+            t.insertion(permutation);
+            if (t.p.interesting) {
                 count = count + 1;
             }
         }
         counts.push_back(count);
     }
 
-    plotVector(counts, start, stop, step);
+    plotVector(counts, start, step);
+
+
+
+
+
+    // int start = 4;
+    // int stop = 5;
+    // int step = 1;
+
+    // std::vector<int> counts;
+
+    // for (int i = start; i < stop; i = i + step) {
+    //     int count = 0;
+
+    //     std::vector<int> elements;
+    //     for (int j = 0; j < i; j++) {
+    //         elements.push_back(j+1);
+    //     }
+
+    //     do {
+
+        
+    //         Tableaux t = Tableaux();
+    //         t.insertion(elements);
+
+    //         if (t.p.interesting) {
+    //             count = count + 1;
+    //             for (int i : elements) {
+    //                 std::cout << i << " ";
+    //             }
+    //             std::cout << std::endl;
+    //         }
+            
+    //     } while (std::next_permutation(elements.begin(), elements.end()));
+    //     counts.push_back(count);
+    // }
+    // plotVector(counts, start, step);
+
 
 
 
